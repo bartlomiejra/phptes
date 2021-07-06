@@ -11,8 +11,8 @@ if (!isset($_POST['email']))
 
 
 <li>
-Kategoria Problemu:</br> <select name="errortype" id="errortype">
-<option value="log" name="subject">Błąd z Logowaniem</option>
+Kategoria Problemu:</br> <select  name="errortype" id="errortype">
+<option value="log" >Błąd z Logowaniem</option>
   <option value="rej">Rejestracja</option>
   <option value="askAdmin">Pytanie do Administratora</option>
   <option value="inne">Inne</option>
@@ -32,7 +32,7 @@ Opisz problem:</br>
 Twój E-mail:</br>  <input type="text" name="email" size="50">
 </li>
 <li>
-<button type="submit" name="send_message_btn">Wyślij</button>
+<button type="submit" class="mesbtn" name="send_message_btn">Wyślij</button>
 
 </li>
 

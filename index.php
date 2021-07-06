@@ -84,7 +84,9 @@ $conn = mysqli_connect("localhost","root","");
 
 $zapytanie=mysqli_query($conn  ,"select * from users where email='$email' and haslo='$haslo' and status='aktywne'");
 //echo "select * from users where email='$email' and haslo='$haslo' and status='aktywne'";
-if (mysqli_num_rows($zapytanie)>0)
+echo $zapytanie;
+print_r($zapytanie);
+if (mysqli_num_rows($zapytanie) > 0)
 {
 $wynik=mysqli_fetch_array($zapytanie);
 $_SESSION['email']=$wynik['email'];
