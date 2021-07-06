@@ -48,6 +48,17 @@ Twój E-mail:</br>  <input type="text" name="email" size="50">
 <?php
 
 }
+if(isset($_POST['send_message_btn'])){
+print_r("Wiadomość Wysłana ");
+
+// $to_email = $administratormail;
+// $subject = 'temat';
+// $message = 'wiadomość ';
+// mail($to_email, $subject, $message,);
+
+
+}
+
 
 
 

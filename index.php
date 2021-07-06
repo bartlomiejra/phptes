@@ -10,8 +10,10 @@ if (@$_SESSION['email'])
 {
 echo "<div>";
 $email=$_SESSION['email'];
+$conn = mysqli_connect("localhost","root","");
+
 $zapytanie=mysqli_query($conn , "select * from users where email='$email'");
-$wynik=mysqli_fetch_array($conn , $zapytanie);
+$wynik=mysqli_fetch_array( $zapytanie);
 echo "Sesja dla użytkownika: <b>".$wynik['imie']." ".$wynik['nazwisko']."</b><hr>"; 
 echo"</div>";
 }
