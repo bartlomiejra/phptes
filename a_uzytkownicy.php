@@ -23,7 +23,7 @@ else
 $zapytanie="update users set imie='$imie', nazwisko='$nazwisko', email='$email', album='$album', tytul='$tytul', data_rej='$data_rej', status='$status', typ='$typ' where id='$id'"; 
 }
 
-if (mysqli_query($zapytanie)) 
+if (mysqli_query($conn , $zapytanie)) 
 {
 komentarz("OK","Zapis danych", "Dane zostały poprawnie zapisane do bazy danych");
 header ("refresh: 2; index.php?akcja=admin&admin=user");
@@ -35,7 +35,7 @@ case ("usun"):
 $id=$_GET['usun'];
 
 $zapytanie="delete from users where id='$id'";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn , $zapytanie))
 komentarz ("OK","Usunięcie danych konta", "Dane zostały usunięte z bazy danych");
 else
 komentarz("blad","Problem z usunięciem danych","Coś poszło nie tak");
@@ -45,7 +45,7 @@ break;
 
 case("edycja"):
 @$id=$_GET['edycja'];
-$zapytanie=mysqli_query("select * from users where id='$id'");
+$zapytanie=mysqli_query($conn , "select * from users where id='$id'");
 $wynik=mysqli_fetch_array($zapytanie);
 
 echo "<form action='index.php?akcja=admin&admin=user&user=zapisz' method='POST'>";
@@ -66,7 +66,7 @@ echo "<option>dr hab. inż. </option>";
 echo "<option>prof. dr hab. inż. </opition>";
 echo "</select> <p>";
 echo "Opcja zmiana hasła: <input type='text' name='haslo'><p>";
-echo "E-mail: <input type='text' name='data_rej' value='".$wynik['data_rej']."'><p>";
+echo "Data Rejestracji: <input type='text' name='data_rej' value='".$wynik['d_rej']."'><p>";
 echo "Status: <select name='status'>";
 echo "<option>".$wynik['status']."</option>";
 echo "<option>aktywne</option>";
@@ -85,7 +85,7 @@ echo "<div style='text-align: right; color: red; font-weight: bold;'><a href='in
 break;
 
 default:
-$zapytanie=mysqli_query("select * from users");
+$zapytanie=mysqli_query($conn ,  "select * from users");
 echo "<table style='width: 100%;'>";
 while ($wynik=mysqli_fetch_array($zapytanie))
 {

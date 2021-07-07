@@ -21,7 +21,7 @@ echo "</fieldset>";
 function baza()
 {
 	$conn = mysqli_connect("localhost","root","");
-mysqli_select_db($conn,  "dyplom2" );
+mysqli_select_db($conn,  "dyplom" );
 }
 
 function formlogin()

@@ -11,7 +11,7 @@ switch ($katedry)
 case ("usun"):
 @$id=$_GET['usun'];
 $zapytanie="delete from katedry where id='$id'";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn, $zapytanie))
 komentarz ("OK","Usunięcie katedry","Katedra została porawnie usunięta z bazy danych");
 else
 komentarz("blad","Problem z usunięciem","Coś poszło nie tak.");
@@ -27,7 +27,7 @@ if (@$_POST['id'])
 $id=$_POST['id'];
 $zapytanie="update katedra set nazwa='$nazwa', opis='$opis'where id='$id'";
 
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn, $zapytanie))
 { 
 komentarz ("OK","Poprawa danych katedry", "Dane zostały poprawnie zapisane do bazy katedr");
 header ("refresh: 2; index.php?akcja=admin&admin=katedry");
@@ -39,7 +39,7 @@ break;
 else 
 {
 
-$zapytanie=mysqli_query("select * from katedra where nazwa='$nazwa'");
+$zapytanie=mysqli_query($conn, "select * from katedra where nazwa='$nazwa'");
 
 if (@mysqli_num_rows($zapytanie)>'0')
 {
@@ -49,7 +49,7 @@ break;
 else
 {
 $zapytanie="insert into katedra values('','$nazwa','$opis')";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn, $zapytanie))
 {
 komentarz("OK","Wprowadzenie danych do bazy","Katedra została przyjęty i zapisana do bazy danych");
 header ("refresh: 2; index.php?akcja=admin&admin=katedry");
@@ -66,7 +66,7 @@ case ("edycja"):
 if (@$_GET['edycja'])
 {
 @$id=$_GET['edycja'];
-$zapytanie_t=mysqli_query("select * from katedra where id='$id'");
+$zapytanie_t=mysqli_query($conn, "select * from katedra where id='$id'");
 $wynik_t=mysqli_fetch_array($zapytanie_t);
 }
 
@@ -87,7 +87,7 @@ break;
 default:
 
 echo "<fieldset><Legend><b> Lista Katedr </b> </legend>";
-$zapytanie=mysqli_query("select * from katedra");
+$zapytanie=mysqli_query($conn, "select * from katedra");
 
 echo "<table style='width: 100%;'>";
 while ($wynik=mysqli_fetch_array($zapytanie))

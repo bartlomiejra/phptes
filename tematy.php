@@ -11,7 +11,7 @@ switch ($tematy)
 case ("usun"):
 @$id=$_GET['usun'];
 $zapytanie="delete from tematy where id='$id'";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn, $zapytanie))
 komentarz ("OK","Usunięcie tematu","Temat został porawnie usunięty z bazy danych");
 else
 komentarz("blad","Problem z usunięciem","Coś poszło nie tak.");
@@ -32,7 +32,7 @@ if (@$_POST['id'])
 $id=$_POST['id'];
 $zapytanie="update tematy set temat='$temat', promotor='$promotor', typ='$typ', r_ak='$r_ak', dyscyplina='$dyscyplina', katedra='$katedra', opis='$opis', slowa_klucz='$slowa_klucz', d_rej='$d_rej', autor='$autor', recenzent='$recenzent', obrona='$obrona', akceptacja='$akceptacja',aktywna='$aktywna' where id='$id'";
 
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn,$zapytanie))
 { 
 komentarz ("OK","Poprawa danych tematu pracy", "Dane zostały poprawnie zapisane do bazy tematów");
 header ("refresh: 2; index.php?akcja=tematy");
@@ -44,7 +44,7 @@ break;
 else 
 {
 
-$zapytanie=mysqli_query("select * from tematy where tytul='$temat'");
+$zapytanie=mysqli_query($conn, "select * from tematy where tytul='$temat'");
 
 if (@mysqli_num_rows($zapytanie)>'0')
 {
@@ -54,7 +54,7 @@ break;
 else
 {
 $zapytanie="insert into tematy values('','$temat','$promotor','$typ','$r_ak','$dyscyplina','$katedra','$opis','$slowa_klucz','$d_rej','$autor','$recenzent','$obrona','$akceptacja','$aktywna')";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn,$zapytanie))
 {
 komentarz("OK","Wprowadzenie danych do bazy","Temat został przyjęty i zapisany do bazy danych");
 header ("refresh: 2; index.php?akcja=tematy");
@@ -71,7 +71,7 @@ case ("edycja"):
 if (@$_GET['edycja'])
 {
 @$id=$_GET['edycja'];
-$zapytanie_t=mysqli_query("select * from tematy where id='$id'");
+$zapytanie_t=mysqli_query($conn,"select * from tematy where id='$id'");
 $wynik_t=mysqli_fetch_array($zapytanie_t);
 }
 
@@ -96,7 +96,7 @@ Rok akademicki: <select name="r_ak">
 Dyscyplina: <select name="dyscyplina">
 <option><?php echo @$wynik_t['dyscyplina']; ?></option>
 <?php
-$zapytanie_d=mysqli_query("select * from dyscyplina");
+$zapytanie_d=mysqli_query($conn,"select * from dyscyplina");
 while ($wynik_d=mysqli_fetch_array($zapytanie_d))
 { echo "<option>".$wynik_d['nazwa']."</option>"; }
 ?>
@@ -104,7 +104,7 @@ while ($wynik_d=mysqli_fetch_array($zapytanie_d))
 Katedra: <select name="katedra">
 <option><?php echo @$wynik_t['katedra']; ?></option>
 <?php
-$zapytanie_k=mysqli_query("select * from katedra");
+$zapytanie_k=mysqli_query($conn,"select * from katedra");
 while ($wynik_k=mysqli_fetch_array($zapytanie_k))
 { echo "<option>".$wynik_k['nazwa']."</option>"; }
 ?>
@@ -119,7 +119,7 @@ Autor: <input type="text" name="autor" size="73"><p>
 Recenzent: <select name="recenzent">
 <option><?php echo @$wynik_t['recenzent']; ?></option>
 <?php
-$zapytanie_r=mysqli_query("select * from users where typ='Pracownik' or typ='Admin'");
+$zapytanie_r=mysqli_query($conn,"select * from users where typ='Pracownik' or typ='Admin'");
 while ($wynik_r=mysqli_fetch_array($zapytanie_r))
 { 
 echo "<option value=".$wynik_r['email'].">".$wynik_r['imie']." ".$wynik_r['nazwisko']." </option>"; }
@@ -150,7 +150,7 @@ default:
 $promotor=$_SESSION['email'];
 
 echo "<fieldset><Legend>Lista <b>AKTYWNYCH</b> tematów prac </legend>";
-$zapytanie=mysqli_query("select * from tematy where aktywna='TAK' and promotor='$promotor'");
+$zapytanie=mysqli_query($conn,"select * from tematy where aktywna='TAK' and promotor='$promotor'");
 
 echo "<table style='width: 100%;'>";
 while ($wynik=mysqli_fetch_array($zapytanie))
@@ -164,7 +164,7 @@ echo "<td>".$wynik['r_ak']."</td>";
 echo "</table></fieldset><p>";
 
 echo "<fieldset><Legend>Lista <b> NIE AKTYWNYCH</b> tematów prac </legend>";
-$zapytanie=mysqli_query("select * from tematy where aktywna='NIE' and promotor='$promotor'");
+$zapytanie=mysqli_query($conn,"select * from tematy where aktywna='NIE' and promotor='$promotor'");
 
 echo "<table style='width: 100%;'>";
 while ($wynik=mysqli_fetch_array($zapytanie))

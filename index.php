@@ -10,7 +10,7 @@ if (@$_SESSION['email'])
 {
 echo "<div>";
 $email=$_SESSION['email'];
-$conn = mysqli_connect("localhost","root","");
+$conn = mysqli_connect("localhost","root","","dyplomy");
 
 $zapytanie=mysqli_query($conn , "select * from users where email='$email'");
 $wynik=mysqli_fetch_array( $zapytanie);
@@ -76,21 +76,37 @@ case("error"):
 	include("zglosProblem.php");
 	break;
 
+
+	case("mail"):
+		include("mail.php");
+		break;
+
 case("inf_stud"):
 include("informacje.php");
 break;
 
 case("logowanie"):
 $email=$_POST['email']; $haslo=$_POST['haslo'];
-$conn = mysqli_connect("localhost","root","");
+// $conn = mysqli_connect("localhost","root","");
+$conn = mysqli_connect("localhost","root","","dyplomy");
+
 
 $zapytanie=mysqli_query($conn  ,"select * from users where email='$email' and haslo='$haslo' and status='aktywne'");
-//echo "select * from users where email='$email' and haslo='$haslo' and status='aktywne'";
-echo $zapytanie;
-print_r($zapytanie);
-if (mysqli_num_rows($zapytanie) > 0)
-{
+
+// $zapytanie=mysqli_query($conn  ,"select * from users where email='$email' ");
+
+$wynik= $zapytanie->num_rows;
+
+
+if ($wynik> 0){
+	
+	$_SESSION['email']=$wynik['email'];
+	$_SESSION['typ']=$wynik['typ'];
+	;
+
 $wynik=mysqli_fetch_array($zapytanie);
+
+
 $_SESSION['email']=$wynik['email'];
 $_SESSION['typ']=$wynik['typ'];
 header("location: index.php");
