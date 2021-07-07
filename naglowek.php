@@ -3,6 +3,8 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
+<meta charset="utf-8">
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="Description" content="Serwis obsługi prac dyplomowych WBMiL - Politechnika Rzeszowska" />
 	<meta name="Keywords" content="dyplom, praca dyplomowa, studia, politechnika rzeszowska, polibuda" />
@@ -82,6 +84,9 @@ if (@$_SESSION['typ']=='Admin')
 
 if (@!$_SESSION['email']) formlogin();
 else echo '<a href="index.php?akcja=wylogowanie"> Wyloguj </a>';
+echo'<form method="POST" action="http://127.0.0.1/dyplomy/index.php?akcja=error">
+    <button class="error" type="submit">Zgłoś Problem </button>
+</form>';
 
 ?>
 </div>

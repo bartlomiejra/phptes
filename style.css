@@ -273,3 +273,13 @@ font-weight: 500;
 	  
 	  
   }
+
+  .mailOk{
+	  color: rgb(9, 95, 9);
+	  font-size: 30px;
+  }
+
+  .mailError{
+	color: rgb(139, 9, 38);
+	font-size: 30px;
+  }

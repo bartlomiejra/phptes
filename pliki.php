@@ -10,7 +10,7 @@ switch($pliki)
 case ("usun"):
 $plik=$_GET['usun'];
 $zapytanie="delete from pliki where plik='$plik'";
-if (!mysqli_query($zapytanie) || !unlink($plik))
+if (!mysqli_query($conn, $zapytanie) || !unlink($plik))
 {
 Komentarz("blad","Problem z usunieciem pliku","Cos poszło nie tak");
 header("Refresh: 2, index.php?akcja=pliki");
@@ -29,7 +29,7 @@ if (move_uploaded_file($_FILES['plik']['tmp_name'],$plik))
 {
 
 $zapytanie="insert into pliki values('','$autor','$praca','$plik','$opis')";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn, $zapytanie))
 komentarz("OK","Plik został zapisany w bazie danych","Wszystko OK");
 else
 komentarz("blad","Problem z zapisem pliku","Coś poszło nie tak");
@@ -44,7 +44,7 @@ default:
 
 echo "<form action='index.php?akcja=pliki&pliki=zapisz' method='POST' enctype='multipart/form-data'>";
 $autor=$_SESSION['email'];
-$zapytanie=mysqli_query("select * from tematy where autor='$autor'");
+$zapytanie=mysqli_query($conn, "select * from tematy where autor='$autor'");
 echo "Praca: <select name='praca'>";
 while ($wynik=mysqli_fetch_array($zapytanie))
 echo "<option value='".$wynik['id']."'>".$wynik['temat']."</option>";
@@ -55,12 +55,12 @@ echo "<hr><input type='submit' value='ZAPISZ' >";
 echo "</form>";
 echo "<hr>";
 
-$zapytanie=mysqli_query("select * from tematy where autor='$autor'");
+$zapytanie=mysqli_query($conn, "select * from tematy where autor='$autor'");
 while ($wynik=mysqli_fetch_array($zapytanie))
 {
 echo "<h2>".$wynik['temat']."</h2>";
 $id_praca=$wynik['id'];
-$zapytanie_pliki=mysqli_query("select * from pliki where praca='$id_praca'");
+$zapytanie_pliki=mysqli_query($conn, "select * from pliki where praca='$id_praca'");
 echo "<table width='100%'>";
 while ($wynik_pliki=mysqli_fetch_array($zapytanie_pliki)) 
 {

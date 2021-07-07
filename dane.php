@@ -7,24 +7,26 @@ naglowek("Edycja danych konta");
 switch($dane)
 {
 
-case("zapisz"):
-$id=$_POST['id'];
-$imie=$_POST['imie']; $nazwisko=$_POST['nazwisko'];
-$email=$_POST['email'];$album=$_POST['album'];
-$tytul=$_POST['tytul']; $haslo1=$_POST['haslo1']; $haslo2=$_POST['haslo2'];
+	case("zapisz"):
+		$id=$_POST['id'];
+		$imie=$_POST['imie']; $nazwisko=$_POST['nazwisko'];
+		$email=$_POST['email'];$album=$_POST['album'];
+		$tytul=$_POST['tytul']; $haslo1=$_POST['haslo1']; $haslo2=$_POST['haslo2'];
+		$conn = mysqli_connect("localhost","root","","dyplomy");
 
 if ($imie=='' || $nazwisko ==''|| $email=='' || $album=='' || $tytul=='' || $haslo1<>$haslo2 || $haslo1=='')
 komentarz ("blad","Problem z wypełnieniem formularza","Dane w formularzu zostały źle wypełnione. Powtórz etap edycji danych");
 else 
 {
-$zapytanie=mysqli_query("select * from users where email='$email' or album='$album'");
+$zapytanie=mysqli_query($conn, "select * from users where email='$email' or album='$album'");
+
 if (mysqli_num_rows($zapytanie)>1)
 komentarz ("blad","Problem z potórzeniem danych"," W bazie danych istnieje już użytkownik z proponowanymi danymi e-mail lub album.");
 else
 {
 @$haslo=md5($haslo1);
 $zapytanie="update users set imie='$imie', nazwisko='$nazwisko', email='$email', album='$album', tytul='$tytul', haslo='$haslo' where id='$id'";
-if (mysqli_query($zapytanie))
+if (mysqli_query($conn, $zapytanie))
 komentarz ("OK","Poprawny zapis danych"," Dane konta zostały uaktualnione");
 else
 komentarz ("blad","Problem z zapisem danych"," Coś poszło nie tak");
@@ -37,7 +39,7 @@ break;
 
 
 default:
-$zapytanie=mysqli_query("select * from users where email='$email'");
+$zapytanie=mysqli_query($conn, "select * from users where email='$email'");
 $wynik=mysqli_fetch_array($zapytanie);
 
 echo "<form action='index.php?akcja=dane&dane=zapisz' method='POST'>";

@@ -10,7 +10,7 @@ if (@$_SESSION['email'])
 {
 echo "<div>";
 $email=$_SESSION['email'];
-$conn = mysqli_connect("localhost","root","");
+$conn = mysqli_connect("localhost","root","","dyplomy");
 
 $zapytanie=mysqli_query($conn , "select * from users where email='$email'");
 $wynik=mysqli_fetch_array( $zapytanie);
@@ -76,27 +76,51 @@ case("error"):
 	include("zglosProblem.php");
 	break;
 
+
+	case("mail"):
+		include("mail.php");
+		break;
+
 case("inf_stud"):
 include("informacje.php");
 break;
 
 case("logowanie"):
 $email=$_POST['email']; $haslo=$_POST['haslo'];
-$conn = mysqli_connect("localhost","root","");
+// $conn = mysqli_connect("localhost","root","");
+$conn = mysqli_connect("localhost","root","","dyplomy");
 
-$zapytanie=mysqli_query($conn  ,"select * from users where email='$email' and haslo='$haslo' and status='aktywne'");
-//echo "select * from users where email='$email' and haslo='$haslo' and status='aktywne'";
-echo $zapytanie;
-print_r($zapytanie);
-if (mysqli_num_rows($zapytanie) > 0)
-{
+
+// $zapytanie=mysqli_query($conn  ,"select * from users where email='$email' and haslo='$haslo' and status='aktywne'");
+
+$zapytanie=mysqli_query($conn  ,"select * from users where email='$email' ");
+// print_r("wynik " . $zapytanie);
+
+// mysqli_num_rows($zapytanie);
+$wynik= $zapytanie->num_rows;
+print_r("wynik " . $wynik);
+
+
+// echo $zapytanie;
+print_r($zapytanie); 
+// if (mysqli_num_rows($zapytanie) > 0)
+if ($wynik> 0){
+	
+	$_SESSION['email']=$wynik['email'];
+	$_SESSION['typ']=$wynik['typ'];
+	;
+
 $wynik=mysqli_fetch_array($zapytanie);
+
+
 $_SESSION['email']=$wynik['email'];
 $_SESSION['typ']=$wynik['typ'];
 header("location: index.php");
 }
 else
 komentarz("blad","Problem z logowaniem","Złe lub błędne frazy logowania. <br>Konto użytkownika może nie być aktywne");
+echo $zapytanie;
+print_r("Brak uzytkownika o takich danych albo błąd quere" . $zapytanie);
 break;
 
 case ("wylogowanie"):
