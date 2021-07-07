@@ -88,7 +88,7 @@ break;
 case("logowanie"):
 $email=$_POST['email']; $haslo=$_POST['haslo'];
 // $conn = mysqli_connect("localhost","root","");
-$conn = mysqli_connect("localhost","root","","dyplomy");
+$conn = mysqli_connect("localhost","root","","dyplom2");
 
 
 $zapytanie=mysqli_query($conn  ,"select * from users where email='$email' and haslo='$haslo' and status='aktywne'");
