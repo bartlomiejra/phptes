@@ -52,10 +52,15 @@ if ($tytul<>"student") $typ="pracownik"; else $typ="student";
 
 // Kontrola czy użytkownik nie ma już konta w bazie danych
 baza();
-$conn = mysqli_connect("localhost","root","");
+$conn = mysqli_connect("localhost","root","","dyplomy");
+// print_r($album);
+$zapyt=mysqli_query($conn, "select * from users where album='$album'");
 
-$zapytanie=mysqli_query($conn, "select * from users where album='$album'");
-if (mysqli_num_rows($zapytanie)<>'0')
+$zapytanie= $zapyt;
+// print_r("elo" . $zapytanie);
+
+
+if ($zapytanie == '0')
 komentarz ("blad","Duplikat danych","Użytkownik o takim numerze albumu jest już zarejestrowany w bazie danych");
 else 
 {
