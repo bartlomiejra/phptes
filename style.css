@@ -1,6 +1,6 @@
 body 
 {
-	height: 100vh;
+	/* height: 100vh; */
 width: 100%;
 margin-top: 10px;
 background: #7d7574;
@@ -217,7 +217,7 @@ align-items: center;
 	  border: black;
 	  padding: 10px;
 	  margin: 4px 2px;
-	  top: 45px;
+	  top: 60px;
 	  right: 20px;
   opacity: 0.6;
   transition: 0.3s;
@@ -264,7 +264,7 @@ font-weight: 700;
 
 .mesbtn{
 	font-size: 1rem;
-	background-color: rgb(42, 56, 179);
+	background-color: rgb(9, 95, 9);
 	color: white;
 	border-radius: 10px;
 	border: black;
