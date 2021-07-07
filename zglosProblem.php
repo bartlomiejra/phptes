@@ -24,10 +24,10 @@ Kategoria Problemu:</br> <select  name="subject" id="errortype">
 Opisz problem:</br> 
 <textarea type="text" name="body"  placeholder="Opisz swój problem..."></textarea>
 </li>
-<li>
+<!-- <li>
 <label  class="labelerror" for="myfile">Wybierz Plik:</br> </label>
 <input type="file" id="myfile" name="myfile">
-</li>
+</li> -->
 <li>
 Twój E-mail:</br>  <input type="text" name="usermail" size="50">
 </li>
