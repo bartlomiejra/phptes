@@ -19,11 +19,9 @@ if(isset($_POST['send_message_btn'])){
 	$body;
 	$headers = "Od: '${usermail}' email";
 	 
-	if( mail($to, $body, $subject,  $headers)) {
-// echo "Email  sent to ...";
+	if( mail($to, $subject, $body,  $headers)) {
 naglowek('<p class="mailOk">' ."Mail Wysłany 📧 " . '</p>');
-echo  "tu jest body: " . $body . "do kogo: " . $to . "temat: " . "$subject" . "Od Kogo: " . $headers;
-header( "refresh:10;url=index.php" );
+
 
 	} else {
 		naglowek('<p class="mailError">' ."Błąd przy wysyłaniu wiadomości " . '</p>');
