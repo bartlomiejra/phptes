@@ -12,6 +12,7 @@
 	<link rel="Stylesheet" type="text/css" href="style.css" />
 
 <style type="text/css">
+
 #tresc ul
 {
 	margin: 0 0 15px 30px;
@@ -22,6 +23,8 @@
 </head>
 <body>
 <div id="calosc">
+
+
 
 <div id="menu">
 <p>
@@ -41,6 +44,7 @@ if (@$_SESSION['typ'])
 <a href="index.php?akcja=dane"><font color="white"> Moje dane </a></font>
 <a href="index.php?akcja=lista_tematow"><font color="white"> Lista tematow prac </a></font>
 <a href="index.php?akcja=pliki"><font color="white"> Zarządzanie plikami prac </a></font>
+<a href="index.php?akcja=galeria"><font color="white"> Galeria</a></font>
 <?php
 }
 ?>
@@ -88,6 +92,7 @@ echo'<form method="POST" action="http://127.0.0.1/dyplomy/index.php?akcja=error"
 ?>
 </div>
 <div id="naglowek">
+
 <h2></h2>
 <h1></h1>
 </div>

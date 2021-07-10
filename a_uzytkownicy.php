@@ -1,10 +1,50 @@
+
+
 <?php
 admin_autoryzacja();
 naglowek("Zarządzanie użytkownikami");
+?>
+<!-- <form method='POST' action='' >
+	<input type='text' name='search' >
+	<a href='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj=".$id."'> Wyszukaj </a>
+	
+	</form> -->
+
+<?php
+//  htmlspecialchars($_POST['search']); 
+	
+
+// if(isset($_POST['search']))
+// {
+	// $searchq=$_POST[$search];
+	// $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
+	
+// 	$query = mysqli_query($conn, "SELECT * FROM members WHERE firstname LIKE '%$searchq%' OR lastname LIKE '%$searchq%'") or die ("could not search");
+// 	$count = mysql_num_rows($query);
+// 	if($count ==0) 
+// 	{
+// 		$output = 'Nic nie znaleziono';
+// 	}
+// 		else
+// 		{
+// 			while($row = mysql_fetch_array($query)) 
+// 			{
+// 			$fname = $row['firstname'];
+// 			$lname = $row['lname'];
+// 			$id = $row['id'];
+// 		        $output .='<div>'.$fname.' '.$lname.'</div>';
+// 			}
+// 		}
+// 	}
+
+?>
+
+<?php
 
 @$user=$_GET['user'];
 Switch ($user)
 {
+
 
 case ("zapisz"):
 $id=$_POST['id'];
@@ -84,7 +124,67 @@ echo "</form>";
 echo "<div style='text-align: right; color: red; font-weight: bold;'><a href='index.php?akcja=admin&admin=user&user=usun&usun=".$id."'> USUŃ KONTO </a></div>";
 break;
 
-default:
+// case("wyszukaj"):
+// 	// @$id=$_GET['edycja'];
+// 	@$id=$_GET['wyszukaj'];
+	
+// 	echo "<form method='POST' action='' >
+// <input type='text' name='search' >
+// <a href='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj'> Wyszukaj </a>
+
+// </form>";
+// print_r("działa");
+// $searchq=$_POST['search'];
+
+// 	if(isset($_POST['search'])){
+// 		$searchq=$_POST['search'];
+
+// 	}else {
+// 		echo("mechh");
+		
+// 	}
+// 		$searchq=$_POST['search'];
+
+
+// 	$zapytanie=mysqli_query($conn ,  "select * from users where id = 2");
+
+// 	// print_r("Działa to ");
+// echo "<table style='width: 100%;'>";
+// while ($wynik=mysqli_fetch_array($zapytanie))
+// {
+// echo "<tr>";
+// echo "<td>".$wynik['id']."</td>";
+// echo "<td>".$wynik['imie']." ".$wynik['nazwisko']."</td>";
+// echo "<td>email: ".$wynik['email']."<br>album: ".$wynik['album']."</td>";
+// echo "<td>".$wynik['tytul']."</td>";
+// echo "<td>".$wynik['d_rej']."</td>";
+// echo "<td>".$wynik['status']."<br>".$wynik['typ']."</td>";
+// $id=$wynik['id'];
+// echo "<td><a href='index.php?akcja=admin&admin=user&user=edycja&edycja=".$id."'> EDYCJA </a>";
+
+// echo "</tr>";
+// }
+// break;
+
+// case("wyszukasj"):
+
+
+	
+// 	$str = $_POST["search"];
+// 	$zapytanie=mysqli_query($conn ,  "SELECT * FROM `search` WHERE Name = '$str'");
+// 	echo "<table style='width: 100%;'>";
+// 	while ($wynik=mysqli_fetch_array($zapytanie))
+
+// 	$sth->setFetchMode(PDO:: FETCH_OBJ);
+// 	$sth -> execute();
+// break;
+
+default: 
+echo "<form method='POST' action='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj' >
+<input type='text' name='search' >
+<a href='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj'> Wyszukaj </a>
+
+</form>";
 $zapytanie=mysqli_query($conn ,  "select * from users");
 echo "<table style='width: 100%;'>";
 while ($wynik=mysqli_fetch_array($zapytanie))

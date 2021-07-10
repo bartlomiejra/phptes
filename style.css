@@ -31,6 +31,7 @@ border: 1px solid;
 	
 }
 
+
 #naglowek h2
 {
 	
@@ -105,7 +106,7 @@ width: 100%
 }
 #tresc
 {
-	
+	min-height: 400px;
 	font-size: medium;
 	text-align: center;
 	float: left;
@@ -229,12 +230,9 @@ align-items: center;
   .error:hover{
 	opacity: 1;
 	  cursor:pointer;
-	 
-	  
-	  
   }
 
-
+  
   .error{
 	font-size: 1rem;
 display: flex;
@@ -242,7 +240,7 @@ align-items: center;
 	background-color: red;
 	color: white;
 	border-radius: 10px;
-	border: black;
+	border: white;
 	padding: 10px;
 	margin: 4px 2px;
 	top: 60px;
@@ -251,15 +249,11 @@ opacity: 0.6;
 transition: 0.3s;
 position: absolute;
 font-weight: 700;
-
-
 }
+
 .error:hover{
   opacity: 1;
 	cursor:pointer;
-   
-	
-	
 }
 
 .mesbtn{
@@ -267,7 +261,7 @@ font-weight: 700;
 	background-color: rgb(9, 95, 9);
 	color: white;
 	border-radius: 10px;
-	border: black;
+	border: white;
 	padding: 15px;
 	/* margin: 4px 2px; */
 opacity: 0.6;
@@ -314,4 +308,146 @@ text-decoration: none;
   .wylogujbtn:hover{
 	opacity: 1;
 	cursor:pointer;
+}
+
+.galeria{
+	margin: 60px;
+	color: white;
+	display: flex;
+    flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	margin-bottom: 200px;
+}
+.galeria zdjec{
+min-height: 100vh;;
+}
+.zdjecie{
+	margin: 5px;
+	/* display: flex; */
+	/* flex-wrap: wrap;	 */
+	height: 150px;
+	width: 250px;
+	position: relative;
+	opacity:0.8;
+	transition: transform 1000ms;
+
+
+}
+
+.zdjecie:hover{
+	-webkit-transform: scale(1.5); /* Saf3.1+, Chrome */
+     -moz-transform: scale(1.5); /* FF3.5+ */
+      -ms-transform: scale(1.5); /* IE9 */
+       -o-transform: scale(1.5); /* Opera 10.5+ */
+          transform: scale(1.5);
+             /* IE6–IE9 */
+             filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.9999619230641713, M12=-0.008726535498373935, M21=0.008726535498373935, M22=0.9999619230641713,SizingMethod='auto expand');
+			 z-index: 10;
+opacity: 1;
+	animation-duration:5s;
+
+	zoom: 120%;
+
+	
+}
+.opiszdjecia{
+	color: white;
+	position:absolute;
+	bottom: 0;
+	top:50%;
+	font-size: 12px;
+}
+.opiszdjecia:hover{
+	opacity:1;
+}
+.data{
+	color: white;
+	position:absolute;
+	top: 0;
+	left: 50%;
+	margin:0;
+	background-color: #3554bb;
+	
+}
+
+
+.obrazek{
+	height: 100%;
+	width:100%;
+}
+
+
+
+.usun:hover{
+	opacity: 1;
+}
+
+.nazwazdj{
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+ .usun, .edytuj{
+	color: black;
+
+	border: white;
+opacity: 0.6;
+transition: 0.3s;
+	font-size: 15px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.full:hover, .usun:hover, .edytuj:hover{
+	opacity: 1;
+
+}
+
+.przyciski{
+	position:absolute;
+	bottom: 0;
+}
+
+.red{
+	color: red;
+	background-color: red;
+}
+
+
+.inputphoto{
+	height: 50px;
+	width: 300px;
+	color: black;
+	border-radius: 2px;
+	text-align: center;
+
+}
+
+.dodajzdj{
+	color: black;
+
+	border: white;
+	padding: 20px;
+	margin: 10px;
+opacity: 0.6;
+transition: 0.3s;
+	font-size: 20px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.dodajzdj:hover{
+	opacity: 1;
+}
+
+button a {
+	text-decoration: none;
+}
+
+a{
+	text-decoration: none;
+	color: black;
 }

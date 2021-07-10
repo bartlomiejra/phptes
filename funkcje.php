@@ -24,6 +24,11 @@ function baza()
 mysqli_select_db($conn,  "dyplom" );
 }
 
+		
+	
+	
+
+	
 function formlogin()
 {
 ?>
@@ -39,6 +44,8 @@ Hasło: <input type="password" name="haslo" size="10">
 
 <?php
 }
+
+
 
 
 
@@ -75,6 +82,7 @@ include("stopka.php");
 exit;
 }
 }
+
 
 ?>
 

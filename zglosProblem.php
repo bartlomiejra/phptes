@@ -32,7 +32,7 @@ Opisz problem:</br>
 Twój E-mail:</br>  <input type="text" name="usermail" size="50">
 </li>
 <li>
-<button  action="http://127.0.0.1/dyplomy/index.php?akcja=mail" type="submit" class="mesbtn" name="send_message_btn">Wyślij</button>
+<button  action="http://127.0.0.1/dyplomy/index.php?akcja=mail type="submit" class="mesbtn" name="send_message_btn">Wyślij</button>
 
 </li>
 
