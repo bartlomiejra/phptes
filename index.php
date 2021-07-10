@@ -48,6 +48,7 @@ case ("pliki"):
 include ("pliki.php");
 break;
 case ("galeria"):
+
 	include ("galeria.php");
 	break;
 	case ("zdjecia"):
@@ -55,6 +56,8 @@ case ("galeria"):
 		break;
 		case ("edytuj"):
 			include ("edytuj.php");
+
+			
 			break;
 			case ("dodanozdj"):
 				include ("dodanozdj.php");

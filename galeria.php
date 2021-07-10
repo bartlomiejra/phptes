@@ -47,7 +47,7 @@ while ($zapytanieZdj=mysqli_fetch_array($zapytanie))
 $id =$zapytanieZdj['id'];
 print_r($id);
 ?>
-	action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj&?ide=<?php echo $zapytanieZdj['id']; ?>">
+	action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj&?$id=<?php echo $zapytanieZdj['id']; ?>">
 	<input type="hidden" value="" name="<?php echo $zapytanieZdj['id']; ?>" />
 
 	<button type="submit" class ="edytuj"

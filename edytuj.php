@@ -1,6 +1,6 @@
 <?php
-$id=$_GET['usun'];
-
+$ide=$_POST['ide'];
+$ika =$zapytanieZdj['id']; 
 // print_r($id);
 // $id = $_GET['id'];
 naglowek("Edytuj  " );
