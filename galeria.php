@@ -33,22 +33,21 @@ while ($zapytanieZdj=mysqli_fetch_array($zapytanie))
 	<p class="data"><?php echo $zapytanieZdj['rok']; ?></p>
 </img>
 
-	<form    class="galeria zdjec" method="POST" action="http://127.0.0.1/dyplomy/index.php?akcja=usun" >
+	<form    class="galeria zdjec" method="POST" action="http://127.0.0.1/dyplomy/index.php?akcja=usun?id=<?php echo $zapytanieZdj['id']; ?>">
 <div class="przyciski">
 	<button class="usun" name="<?php echo $zapytanieZdj['id']; ?>"
 	
 	 id="<?php echo $zapytanieZdj['id']; ?>">Usun
 	</button>
 </form>
+<td>
+
 <form  method="POST"
 <?php
 $id =$zapytanieZdj['id'];
 print_r($id);
 ?>
-	action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj"
-
-
- >
+	action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj&?ide=<?php echo $zapytanieZdj['id']; ?>">
 	<input type="hidden" value="" name="<?php echo $zapytanieZdj['id']; ?>" />
 
 	<button type="submit" class ="edytuj"

@@ -1,9 +1,12 @@
 <?php
+$id=$_GET['usun'];
 
+// print_r($id);
+// $id = $_GET['id'];
+naglowek("Edytuj  " );
+// @$id=$_GET['edycja'];
 
-naglowek("Edytuj  ");
-
-$id = 2;
+// $id = 2;
 
 
 	$zapytanie=mysqli_query($conn , "SELECT  * from galeria  where id = '$id'" );
