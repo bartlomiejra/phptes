@@ -17,33 +17,42 @@ naglowek("Galeria Zdjęć   ");
 
 <?php
 baza();
-
+$osk = 3;
 $zapytanie=mysqli_query($conn ,  "select * from galeria");
 echo "<div class='galeria'>";
 
-while ($wynik=mysqli_fetch_array($zapytanie))
+while ($zapytanieZdj=mysqli_fetch_array($zapytanie))
 {
 	?>
 
-	<div class="zdjecie id="<?php echo $wynik['id']; ?>">
+	<div class="zdjecie id="<?php echo $zapytanieZdj['id']; ?>">
 		
-	<img class="obrazek" src="<?php echo $wynik['link']; ?>" alt="<?php echo $wynik['opis']; ?>" title="<?php echo $wynik['id']; ?>"  >
-	<p class="nazwazdj"><?php echo $wynik['nazwa']; ?></p>
-	<p class="opiszdjecia"><?php echo $wynik['opis']; ?></p>
-	<p class="data"><?php echo $wynik['rok']; ?></p>
+	<img class="obrazek" src="<?php echo $zapytanieZdj['link']; ?>" alt=<?php echo $zapytanieZdj['opis']; ?>"  title="<?php echo $zapytanieZdj['id']; ?>"  >
+	<p class="nazwazdj"><?php echo $zapytanieZdj['nazwa']; ?></p>
+	<p class="opiszdjecia"><?php echo $zapytanieZdj['opis']; ?></p>
+	<p class="data"><?php echo $zapytanieZdj['rok']; ?></p>
 </img>
 
 	<form    class="galeria zdjec" method="POST" action="http://127.0.0.1/dyplomy/index.php?akcja=usun" >
 <div class="przyciski">
-	<button class="usun" name="<?php echo $wynik['id']; ?>"
+	<button class="usun" name="<?php echo $zapytanieZdj['id']; ?>"
 	
-	 id="<?php echo $wynik['id']; ?>">Usun
+	 id="<?php echo $zapytanieZdj['id']; ?>">Usun
 	</button>
 </form>
-<form  method="POST"action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj" >
+<form  method="POST"
+<?php
+$id =$zapytanieZdj['id'];
+print_r($id);
+?>
+	action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj"
+
+
+ >
+	<input type="hidden" value="" name="<?php echo $zapytanieZdj['id']; ?>" />
 
 	<button type="submit" class ="edytuj"
-	 name="<?php echo $wynik['id']; ?>" value="<?php echo $wynik['id']; ?>">Edytuj
+	 name="<?php echo $zapytanieZdj['id']; ?>" value="<?php echo $zapytanieZdj['id']; ?>">Edytuj
 	
 	 </button>
 </form>

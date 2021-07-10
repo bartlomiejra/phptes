@@ -21,6 +21,7 @@ $result = $conn->query($zapytanie);
 
 if ($result == TRUE) {
 	naglowek  ("Dodano zdjęcie");
+	
 } else {
 	naglowek  ("Błąd przy dodawaniu' .  $conn->error");
 }
@@ -28,7 +29,7 @@ header( "refresh:5;index.php?akcja=galeria" );
 }
 else{
 	naglowek ("Niepoprawnie wypełniony formularz! ");
-	echo "Użytkowniku, najwidoczniej masz problem z wypełnieniem prostego formularza, spróbuj jeszcze raz :) ";
+	echo "Użytkowniku, najwidoczniej masz problem z wypełnieniem formularza, spróbuj jeszcze raz :) ";
 	header( "refresh:3;index.php?akcja=galeria" );
 
 }

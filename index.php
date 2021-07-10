@@ -80,6 +80,8 @@ case("error"):
 			case("edytuj"):
 				include("edytuj.php");
 				break;
+			
+				
 case("inf_stud"):
 include("informacje.php");
 break;

@@ -1,4 +1,6 @@
 <?php
+
+
 admin_autoryzacja();
 naglowek("Zarządzanie Katedrami (słowniki)");
 
