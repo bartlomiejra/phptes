@@ -10,6 +10,8 @@ if(isset($_POST['edytujzdj'])){
 	$link = $_POST['link'];
 	$rok = $_POST['rok'];
 
+	echo $nazwa;
+
 	$update=("UPDATE galeria
 	SET opis = '$opis', link = '$link',rok = '$rok'
 	WHERE  nazwa= '$nazwa'");

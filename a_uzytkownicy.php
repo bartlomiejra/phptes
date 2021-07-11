@@ -127,10 +127,6 @@ break;
 case("wyszukaj"):
 	echo "<td><a href='http://127.0.0.1/dyplomy/index.php?akcja=admin&admin=user'> Wyszukaj ponownie </a>";
 	
-
-
-	// @$id=$_GET['wyszukaj'];
-	
 if(isset($_POST['wyszukaj'])){
 	$searcher = $_POST['search'];
 	$zapytanie=mysqli_query($conn ,  "select * from users where imie LIKE '%$searcher%' OR nazwisko LIKE '%$searcher%'");
