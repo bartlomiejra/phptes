@@ -12,7 +12,7 @@ if(isset($_POST['usunzdj'])){
 	
 	$selectwartosc = $_POST['owners'];
 	// echo $selectwartosc . " wartość";
-	$selectid = "DELETE FROM `dyplomy`.`galeria` WHERE `galeria`.`nazwa` = '$selectwartosc' IGNORE CONSTRAINTS
+	$selectid = "DELETE FROM `dyplomy`.`galeria` WHERE `galeria`.`nazwa` = '$selectwartosc' 
 	";
 
 	$resultat = $conn->query($selectid);
