@@ -84,12 +84,12 @@ echo "</div>";
 
 <hr>
 <h1 class="mar">Usuń zdjęcie</h1>
-	<select class="owner" name="owner">
+	<select class="owner" name="owners">
 <?php 
 $sql = mysqli_query($conn, "SELECT nazwa FROM galeria");
 while ($row = $sql->fetch_assoc()){
 	?>
-	 <option value=" <?php echo $row['nazwa'] ?>" > <?php echo  $row['nazwa'] ?> </option>
+	 <option value="<?php echo $row['nazwa'] ?>" > <?php echo  $row['nazwa'] ?> </option>
 <?php
 }
 ?>
@@ -108,7 +108,7 @@ $wynik_t=mysqli_fetch_array($zapytanie);
 
 
 ?>
-<form class="dodajform" action="http://127.0.0.1/dyplomy/index.php?akcja=edytuj" 
+<form class="dodajform" 
 method="POST"><hr>
 <h1>Edytuj zdjęcie</h1>
 
@@ -120,20 +120,20 @@ method="POST"><hr>
 $sql = mysqli_query($conn, "SELECT   nazwa FROM galeria");
 while ($row = $sql->fetch_assoc()){
 	?>
-	 <option value=" <?php echo $row['nazwa'] ?>" > <?php echo  $row['nazwa'] ?> </option>
+	 <option value="<?php echo $row['nazwa'] ?>" > <?php echo  $row['nazwa'] ?> </option>
 <?php
 }
 ?>
 </select><br>
 </li>
 <li>
-<input  class="inputphoto" placeholder="Dodaj Nowy Opis" name="opis" 
+<input  class="inputphoto" placeholder="Dodaj Nowy Opis" name="opiszdj" 
 </li>
 <li>
-<input class="inputphoto" placeholder="Dodaj Nowy Link"  type="" name="link">
+<input class="inputphoto" placeholder="Dodaj Nowy Link"  type="" name="linkzdj">
 </li>
 <li>
-<input class="inputphoto"  placeholder="Edytuj Rok "  type="" name="rok" >
+<input class="inputphoto"  placeholder="Edytuj Rok "  type=""name="rokzdj" >
 </li>
 <button name="edytujzdj" class ="dodajzdj">Edytuj</button>
 
@@ -144,3 +144,50 @@ while ($row = $sql->fetch_assoc()){
 
 
 </div>
+
+
+<?php
+autoryzacja();
+
+
+	
+if(isset($_POST['edytujzdj']) and (!empty($_POST['linkzdj']))){
+
+	$nazwa = $_POST['names'];
+	$opis = $_POST['opiszdj'];
+	$link = $_POST['linkzdj'];
+	$rok = $_POST['rokzdj'];
+	echo  $nazwa;
+	echo $opis;
+
+
+	$update=("UPDATE galeria SET 
+	opis = '$opis', 
+	link = '$link',
+	rok = '$rok'
+	WHERE 
+	 nazwa= '$nazwa' ");
+print_r("$update");
+echo $update;
+$resultstt = $conn->query($update);
+
+if ($resultstt == TRUE) {
+	naglowek ("Edytowano zdjęcie");
+	// header( "refresh:3;index.php?akcja=galeria" );
+
+
+} else {
+	naglowek  ("Błąd przy edytowaniu' .  $conn->error");
+
+}
+}else{
+	naglowek ("NIepoprawnie wypełniony formularz");
+	echo "Użytkowniku, najwidoczniej masz problem z wypełnieniem formularza, spróbuj jeszcze raz :) ";
+	// header( "refresh:3;index.php?akcja=galeria" );
+}
+
+
+
+
+
+?>
