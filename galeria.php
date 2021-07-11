@@ -83,7 +83,7 @@ echo "</div>";
 ">
 
 <hr>
-<h1>Usuń zdjęcie</h1>
+<h1 class="mar">Usuń zdjęcie</h1>
 	<select class="owner" name="owner">
 <?php 
 $sql = mysqli_query($conn, "SELECT nazwa FROM galeria");
@@ -94,7 +94,7 @@ while ($row = $sql->fetch_assoc()){
 }
 ?>
 </select><br>
-<button class="dodajzdj"name="usunzdj">Usuń</button>
+<button class="usunzdj"name="usunzdj">Usuń</button>
 </form>
 
 

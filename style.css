@@ -440,15 +440,13 @@ a{
 
 .owner{
 	margin-bottom: 65px;
-	/* padding-left: 10px; */
-	/* padding-right: 10px; */
-	/* height: 50px;  */
 	width: 150px;
-	
+	margin-right: 10px;
+	margin-left: 10px;
 }
-/* .dodajform{
-	margin-left 10px;
-	margin-right 10px;
-} */
 
 
+.mar{
+	margin-left: 10px;
+
+}
