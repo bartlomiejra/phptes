@@ -21,11 +21,10 @@ $result = $conn->query($zapytanie);
 
 if ($result == TRUE) {
 	naglowek  ("Dodano zdjęcie");
-	
 } else {
 	naglowek  ("Błąd przy dodawaniu' .  $conn->error");
 }
-header( "refresh:5;index.php?akcja=galeria" );
+header( "refresh:3;index.php?akcja=galeria" );
 }
 else{
 	naglowek ("Niepoprawnie wypełniony formularz! ");
