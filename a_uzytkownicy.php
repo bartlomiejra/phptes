@@ -124,66 +124,40 @@ echo "</form>";
 echo "<div style='text-align: right; color: red; font-weight: bold;'><a href='index.php?akcja=admin&admin=user&user=usun&usun=".$id."'> USUŃ KONTO </a></div>";
 break;
 
-// case("wyszukaj"):
-// 	// @$id=$_GET['edycja'];
-// 	@$id=$_GET['wyszukaj'];
+case("wyszukaj"):
+	echo "<td><a href='http://127.0.0.1/dyplomy/index.php?akcja=admin&admin=user'> Wyszukaj ponownie </a>";
 	
-// 	echo "<form method='POST' action='' >
-// <input type='text' name='search' >
-// <a href='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj'> Wyszukaj </a>
-
-// </form>";
-// print_r("działa");
-// $searchq=$_POST['search'];
-
-// 	if(isset($_POST['search'])){
-// 		$searchq=$_POST['search'];
-
-// 	}else {
-// 		echo("mechh");
-		
-// 	}
-// 		$searchq=$_POST['search'];
 
 
-// 	$zapytanie=mysqli_query($conn ,  "select * from users where id = 2");
-
-// 	// print_r("Działa to ");
-// echo "<table style='width: 100%;'>";
-// while ($wynik=mysqli_fetch_array($zapytanie))
-// {
-// echo "<tr>";
-// echo "<td>".$wynik['id']."</td>";
-// echo "<td>".$wynik['imie']." ".$wynik['nazwisko']."</td>";
-// echo "<td>email: ".$wynik['email']."<br>album: ".$wynik['album']."</td>";
-// echo "<td>".$wynik['tytul']."</td>";
-// echo "<td>".$wynik['d_rej']."</td>";
-// echo "<td>".$wynik['status']."<br>".$wynik['typ']."</td>";
-// $id=$wynik['id'];
-// echo "<td><a href='index.php?akcja=admin&admin=user&user=edycja&edycja=".$id."'> EDYCJA </a>";
-
-// echo "</tr>";
-// }
-// break;
-
-// case("wyszukasj"):
-
-
+	// @$id=$_GET['wyszukaj'];
 	
-// 	$str = $_POST["search"];
-// 	$zapytanie=mysqli_query($conn ,  "SELECT * FROM `search` WHERE Name = '$str'");
-// 	echo "<table style='width: 100%;'>";
-// 	while ($wynik=mysqli_fetch_array($zapytanie))
+if(isset($_POST['wyszukaj'])){
+	$searcher = $_POST['search'];
+	$zapytanie=mysqli_query($conn ,  "select * from users where imie LIKE '%$searcher%' OR nazwisko LIKE '%$searcher%'");
+echo "<table style='width: 100%;'>";
 
-// 	$sth->setFetchMode(PDO:: FETCH_OBJ);
-// 	$sth -> execute();
-// break;
+while ($wynik=mysqli_fetch_array($zapytanie))
+{
+echo "<tr>";
+echo "<td>".$wynik['id']."</td>";
+echo "<td>".$wynik['imie']." ".$wynik['nazwisko']."</td>";
+echo "<td>email: ".$wynik['email']."<br>album: ".$wynik['album']."</td>";
+echo "<td>".$wynik['tytul']."</td>";
+echo "<td>".$wynik['d_rej']."</td>";
+echo "<td>".$wynik['status']."<br>".$wynik['typ']."</td>";
+$id=$wynik['id'];
+echo "<td><a href='index.php?akcja=admin&admin=user&user=edycja&edycja=".$id."'> EDYCJA </a>";
+echo "</tr>";
+}
+echo "</table>";
+}
+
+break;
 
 default: 
 echo "<form method='POST' action='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj' >
 <input type='text' name='search' >
-<a href='index.php?akcja=admin&admin=user&user=wyszukaj&wyszukaj'> Wyszukaj </a>
-
+<button name='wyszukaj'>Wyszukaj</button>
 </form>";
 $zapytanie=mysqli_query($conn ,  "select * from users");
 echo "<table style='width: 100%;'>";
@@ -202,4 +176,8 @@ echo "</tr>";
 }
 echo "</table>";
 }
-?>
+
+
+
+
+	?>

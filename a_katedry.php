@@ -85,9 +85,31 @@ Opis: <textarea rows="10" cols="75" name="opis"><?php echo @$wynik_t['opis']; ?>
 <?php
 break;
 
+case("wyszukaj"):
+	echo "<td><a href='	http://127.0.0.1/dyplomy/index.php?akcja=admin&admin=katedry'> Wyszukaj ponownie </a>";
+if(isset($_POST['wyszukajk'])){
+	$searcher = $_POST['search'];
+	$zapytanie=mysqli_query($conn, "select * from katedra where  nazwa LIKE '%$searcher%' OR opis LIKE '%$searcher%'");
 
+	echo "<table style='width: 100%;'>";
+	while ($wynik=mysqli_fetch_array($zapytanie))
+	{
+	echo "<tr>";
+	$id=$wynik['id'];
+	echo "<td><a href='index.php?akcja=admin&admin=katedry&katedry=edycja&edycja=".$id."'>".$wynik['nazwa']."</a></td>";
+	echo "</tr>";
+	}
+	echo "</table></fieldset><p>";
+	break;
+
+
+}
 default:
 
+echo "<form method='POST' action='index.php?akcja=admin&admin=katedry&katedry=wyszukaj&wyszukaj' >
+<input type='text' name='search' >
+<button name='wyszukajk'>Wyszukaj</button>
+</form>";
 echo "<fieldset><Legend><b> Lista Katedr </b> </legend>";
 $zapytanie=mysqli_query($conn, "select * from katedra");
 

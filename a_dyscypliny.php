@@ -83,8 +83,37 @@ Opis: <textarea rows="10" cols="75" name="opis"><?php echo @$wynik_t['opis']; ?>
 <?php
 break;
 
+case("wyszukaj"):
+echo "<td><a href='http://127.0.0.1/dyplomy/index.php?akcja=admin&admin=dyscypliny'> Wyszukaj ponownie </a>";
+
+if(isset($_POST['wyszukajd'])){
+	$searcher = $_POST['search'];
+
+
+echo "<fieldset><Legend><b> Lista Dyscyplin </b> </legend>";
+$zapytanie=mysqli_query($conn , "select * from dyscyplina where  nazwa LIKE '%$searcher%' OR opis LIKE '%$searcher%'");
+
+echo "<table style='width: 100%;'>";
+while ($wynik=mysqli_fetch_array($zapytanie))
+{
+echo "<tr>";
+$id=$wynik['id'];
+echo "<td><a href='index.php?akcja=admin&admin=dyscypliny&dyscypliny=edycja&edycja=".$id."'>".$wynik['nazwa']."</a></td>";
+echo "</tr>";
+}
+echo "</table></fieldset><p>";
+
+}
+
+
+break;
 
 default:
+echo "<form method='POST' action='http://127.0.0.1/dyplomy/index.php?akcja=admin&admin=dyscypliny&dyscypliny=wyszukaj&wyszukaj' >
+<input type='text' name='search' >
+<button name='wyszukajd'>Wyszukaj</button>
+</form>";
+
 
 echo "<fieldset><Legend><b> Lista Dyscyplin </b> </legend>";
 $zapytanie=mysqli_query($conn , "select * from dyscyplina");

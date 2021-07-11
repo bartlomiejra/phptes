@@ -3,6 +3,8 @@
 
 
 <?php	
+autoryzacja();
+
 $conn = mysqli_connect("localhost","root","","dyplomy");
 
 if(isset($_POST['usunzdj'])){
@@ -12,11 +14,17 @@ if(isset($_POST['usunzdj'])){
 
 	if (mysqli_query($conn, $usunzdj)){
 		naglowek ("Usunięto Pomyślnie");
+		header( "refresh:3;index.php?akcja=galeria" );
+
 
 	  } else {
 		naglowek ("Błąd Podczas usuwania" . $conn->error);
+		header( "refresh:3;index.php?akcja=galeria" );
+
+
 
 	  }
+	  
 
 	  $result = $conn->query($usunzdj);
 	
