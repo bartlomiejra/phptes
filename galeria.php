@@ -89,7 +89,7 @@ echo "</div>";
 $sql = mysqli_query($conn, "SELECT nazwa FROM galeria");
 while ($row = $sql->fetch_assoc()){
 	?>
-	 <option value="<?php echo $row['nazwa'] ?>" > <?php echo  $row['nazwa'] ?> </option>
+	 <option value=" <?php echo $row['nazwa'] ?>" > <?php echo  $row['nazwa'] ?> </option>
 <?php
 }
 ?>

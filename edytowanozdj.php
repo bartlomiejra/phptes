@@ -1,4 +1,0 @@
-<?php
-naglowek("edytowano");
-
-?>
